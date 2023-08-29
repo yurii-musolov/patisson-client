@@ -1,7 +1,1 @@
-docker container rm --force 'container_patisson_client_development'
-docker image rm --force 'image_patisson_client_development'
-
-nvm use 20.5
-npm install
-docker build --rm --file Dockerfile.development --tag 'image_patisson_client_development' .
-docker run --rm  --name 'container_patisson_client_development' --detach -p 8090:5173 --mount type=bind,src=$(pwd),dst=/usr/app --workdir /usr/app 'image_patisson_client_development'
+docker run --rm -it -p 8090:5173 --mount type=bind,src=$(pwd),dst=/usr/app --workdir /usr/app --name 'container_patisson_client_development' node:20.5 bash ./scripts/start.dev.sh
